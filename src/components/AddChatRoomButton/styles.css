@@ -1,0 +1,10 @@
+.buttonStyle {
+    padding: 10px;
+    background-color: var(--color-blue);
+    color: #fff;
+    border: none;
+    borderRadius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  };
+  
