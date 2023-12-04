@@ -1,3 +1,4 @@
+import React from 'react';
 import { AuthenticatedApp } from './components/AuthenticatedApp';
 import { UnauthenticatedApp } from './components/UnauthenticatedApp';
 import { useAuth } from './hooks/useAuth';
@@ -10,6 +11,7 @@ function App() {
         <div className="container">
             <h1>N423 Final</h1>
             {user ? <AuthenticatedApp /> : <UnauthenticatedApp />}
+           
         </div>
     );
 }

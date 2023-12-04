@@ -1,5 +1,11 @@
 import { initializeApp } from "firebase/app";
-import { GoogleAuthProvider, signInWithPopup, getAuth } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  getAuth,
+  signInWithRedirect,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import {
   getFirestore,
   collection,
@@ -25,19 +31,41 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app);
+
+// async function loginWithGoogle() {
+//   try {
+//     const provider = new GoogleAuthProvider();
+//     const auth = getAuth();
+
+//     const { user } = await signInWithPopup(auth, provider);
+
+//     return { uid: user.uid, displayName: user.displayName };
+//   } catch (error) {
+//     if (error.code !== "auth/cancelled-popup-request") {
+//       console.error(error);
+//     }
+//     return null;
+//   }
+// }
 
 async function loginWithGoogle() {
   try {
     const provider = new GoogleAuthProvider();
-    const auth = getAuth();
-
     const { user } = await signInWithPopup(auth, provider);
-
     return { uid: user.uid, displayName: user.displayName };
   } catch (error) {
-    if (error.code !== "auth/cancelled-popup-request") {
-      console.error(error);
-    }
+    console.error(error);
+    return null;
+  }
+}
+
+async function loginWithEmailPassword(email, password) {
+  try {
+    const { user } = await signInWithEmailAndPassword(auth, email, password);
+    return { uid: user.uid, displayName: user.displayName };
+  } catch (error) {
+    console.error(error);
     return null;
   }
 }
@@ -101,4 +129,5 @@ export {
   getMessages,
   addChatRoom,
   deleteChatRoom,
+  loginWithEmailPassword,
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import { sendMessage } from '../../services/firebase';
-import './styles.css';
+import './stylesMI.css';
 
 function MessageInput({ roomId }) {
     const { user } = useAuth();
@@ -34,5 +34,7 @@ function MessageInput({ roomId }) {
         </form>
     );
 }
+
+
 
 export { MessageInput };

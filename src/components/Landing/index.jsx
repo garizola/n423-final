@@ -29,7 +29,7 @@ function Landing() {
 
   return (
     <div className="landing-container">
-      {/* <h2>Choose a Topic</h2> */}
+     
       <header className="header">
         <AddChatRoomButton />
       </header>

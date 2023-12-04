@@ -10,14 +10,7 @@ function ChatRoom() {
     const params = useParams();
     const { user } = useAuth();
     const [room, setRoom] = useState(null);
-    const [userProfilePicture, setUserProfilePicture] = React.useState(null);
 
-  React.useEffect(() => {
-    // Fetch the user's profile picture URL after signing in with Google
-    if (user) {
-      setUserProfilePicture(user.photoURL);
-    }
-  }, [user]);
 
     useEffect(() => {
         const fetchRoom = async () => {

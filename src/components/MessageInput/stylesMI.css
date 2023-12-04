@@ -1,11 +1,11 @@
-.message-input-container {
-    display: flex;
+.message-input-container-1 {
+    display: flex !important;
     gap: 4px;
 }
 
 .message-input {
     padding: 12px 8px;
-    flex: 1;
+    flex: 1 1 !important;
     background: var(--color-gray);
     border-radius: var(--border-radius);
 }
@@ -16,3 +16,4 @@
     border-radius: var(--border-radius);
     cursor: pointer;
 }
+

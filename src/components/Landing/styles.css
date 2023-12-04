@@ -115,3 +115,22 @@
     margin-bottom: 4px;
     font-size: 12px; /* Adjust the font size based on your preference */
   }
+
+  .message-input-container-1 {
+    display: flex !important;
+    gap: 4px;
+}
+
+.message-input {
+    padding: 12px 8px;
+    flex: 1 1 !important;
+    background: var(--color-gray);
+    border-radius: var(--border-radius);
+}
+
+.send-message {
+    padding: 12px 14px;
+    background: var(--color-blue);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+}
