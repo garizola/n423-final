@@ -32,3 +32,13 @@
     cursor: pointer;
 }
 
+
+
+.chatroom-container {
+    cursor: pointer;
+    transition: height 0.3s ease-in-out; /* Add a smooth transition effect */
+  }
+  
+  .chatroom-container.expanded {
+    height: 300px; /* Set the expanded height as needed */
+  }

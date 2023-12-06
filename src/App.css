@@ -4,7 +4,8 @@
 
 html {
     --color-background: hsl(216, 8%, 22%);
-    --color-blue: #4895ef;
+    /* --color-blue: #4895ef; */
+    --color-blue: #FF7F4A;
     --color-gray: hsl(210, 1%,60%);
     --color-white: white;
     --border-radius: 5px;
@@ -51,9 +52,8 @@ button {
 
 .container {
     height: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 32px;
+    width: 100%;
+    padding: 22px;
     background-color: var(--color-background);
     display: flex;
     flex-direction: column;
@@ -61,10 +61,15 @@ button {
     gap: 32px;
 }
 
+@media only screen and (max-width: 550px) {
+    .container {padding: 16px 10px}
+  }
+
 
 .message-input-container {
     display: flex !important;
     gap: 4px;
+    max-width: 100%;
 }
 
 .message-input {

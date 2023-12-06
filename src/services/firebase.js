@@ -33,22 +33,6 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 
-// async function loginWithGoogle() {
-//   try {
-//     const provider = new GoogleAuthProvider();
-//     const auth = getAuth();
-
-//     const { user } = await signInWithPopup(auth, provider);
-
-//     return { uid: user.uid, displayName: user.displayName };
-//   } catch (error) {
-//     if (error.code !== "auth/cancelled-popup-request") {
-//       console.error(error);
-//     }
-//     return null;
-//   }
-// }
-
 async function loginWithGoogle() {
   try {
     const provider = new GoogleAuthProvider();
@@ -103,7 +87,7 @@ function getMessages(roomId, callback) {
 async function addChatRoom(title) {
   try {
     const newRoomRef = await addDoc(collection(db, "chat-rooms"), {
-      title: title,
+      title: title.toUpperCase(),
       // Add other properties if needed
     });
 

@@ -24,6 +24,8 @@ function LandingMessageList({ roomId }) {
             key={x.id}
             message={x}
             isOwnMessage={x.uid === user.uid}
+            isAdmin={x.uid === 'QJ8RVLaP7VeUDu6r3dwoUilJBJ73'}
+            isMod={x.uid === 'R3cajXtPDTOBFg5yPvaYaBPeJ4Q2'}
           />
         ))}
       </ul>
@@ -31,7 +33,7 @@ function LandingMessageList({ roomId }) {
   );
 }
 
-function Message({ message, isOwnMessage, userProfilePicture }) {
+function Message({ message, isOwnMessage, userProfilePicture, isAdmin, isMod }) {
     const { displayName, text } = message;
   
     return (
@@ -40,7 +42,7 @@ function Message({ message, isOwnMessage, userProfilePicture }) {
           {userProfilePicture && <img src={userProfilePicture} alt="Profile" />}
         </div>
         <div className="message-content">
-          <h4 className="sender">{isOwnMessage ? 'You' : displayName}</h4>
+          <h4 className={['sender', isAdmin && 'admin-message'].join(' ')}>{isOwnMessage ? 'You' : displayName}</h4>
           <div>{text}</div>
         </div>
       </li>

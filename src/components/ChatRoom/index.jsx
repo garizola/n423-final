@@ -11,6 +11,8 @@ function ChatRoom() {
     const { user } = useAuth();
     const [room, setRoom] = useState(null);
 
+  
+
 
     useEffect(() => {
         const fetchRoom = async () => {

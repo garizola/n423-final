@@ -6,7 +6,7 @@ import './styles.css'
 
 function AddChatRoomButton() {
   const handleAddChatRoom = () => {
-    const newChatRoomTitle = prompt('Enter the new chat room title') || 'New Room';
+    const newChatRoomTitle = prompt('Enter the new topic title') || 'New Topic';
     addChatRoom(newChatRoomTitle);
   };
 

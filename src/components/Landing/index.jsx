@@ -2,8 +2,9 @@
 
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getFirestore, collection, onSnapshot } from 'firebase/firestore';
 import { AddChatRoomButton } from '../AddChatRoomButton';
+import { getFirestore, collection, onSnapshot, query, where, orderBy } from 'firebase/firestore';
+
 import { DeleteChatRoomButton } from '../DeleteChatRoomButton';
 import { LandingMessageList } from '../LandingMessageList';
 import { MessageInput } from '../MessageInput';
@@ -11,27 +12,66 @@ import './styles.css';
 
 function Landing() {
   const [chatRooms, setChatRooms] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
+
+
+  // useEffect(() => {
+  //   const db = getFirestore();
+  //   const roomsCollection = collection(db, 'chat-rooms');
+
+  //   const unsubscribe = onSnapshot(roomsCollection, (snapshot) => {
+  //     const roomsData = snapshot.docs.map((doc) => ({
+  //       id: doc.id,
+  //       ...doc.data(),
+  //     }));
+  //     setChatRooms(roomsData);
+  //   });
+
+  //   return () => unsubscribe();
+  // }, []);
 
   useEffect(() => {
     const db = getFirestore();
     const roomsCollection = collection(db, 'chat-rooms');
 
-    const unsubscribe = onSnapshot(roomsCollection, (snapshot) => {
-      const roomsData = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setChatRooms(roomsData);
-    });
+    const unsubscribe = onSnapshot(
+      query(
+        roomsCollection,
+        orderBy('title'), // Order chat rooms by title
+        where('title', '>=', searchQuery.toUpperCase()) // Filter chat rooms based on the search query
+      ),
+      (snapshot) => {
+        const roomsData = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setChatRooms(roomsData);
+      }
+    );
 
     return () => unsubscribe();
-  }, []);
+  }, [searchQuery]);
+
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
 
   return (
     <div className="landing-container">
      
-      <header className="header">
+      <header className="head-top">
         <AddChatRoomButton />
+        {/* <div>
+          <label htmlFor="search">Search:</label>
+          <input
+            type="text"
+            id="search"
+            className="message-input mr"
+            value={searchQuery}
+            onChange={handleSearchChange}
+            placeholder="Enter topic title"
+          />
+        </div> */}
       </header>
       <div className="chat-rooms-container">
         {chatRooms.map((room) => (

@@ -11,7 +11,7 @@ const buttonStyle = {
 
 function DeleteChatRoomButton({ roomId }) {
   const handleDeleteChatRoom = () => {
-    const confirmDelete = window.confirm('Are you sure you want to delete this chat room?');
+    const confirmDelete = window.confirm('Are you sure you want to delete this topic?');
     if (confirmDelete) {
       deleteChatRoom(roomId);
     }

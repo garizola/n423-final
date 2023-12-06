@@ -8,21 +8,26 @@
   }
   
   .chat-rooms-container {
-    width: 90%; /* Set to 90% of the width */
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
     
     
   }
+
+  @media only screen and (max-width: 800px) {
+    .chat-rooms-container {justify-content: space-around; }
+  }
+
+
   
 .chat-room {
  
-    width: 300px;
-  
+    max-width: 400px;
+    width: 100%;
     border: 2px solid #fff;
     border-radius: var(--border-radius);
-    overflow: hidden;
     padding: 16px;
     margin-bottom: 16px; 
     display: flex;
@@ -42,17 +47,21 @@
 
 /* ... (other existing styles) */
 
-
+.mr {
+  margin-left: 8px;
+}
 
   .head-top {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-    
-    margin-bottom: 16px;
+    gap: 16px;
+    margin-bottom: 8px;
     
   }
+
+  @media only screen and (max-width: 550px) { .head-top {flex-direction: column; } }
   .deleteBtn {
     margin-left: 16px; /* Adjust margin as needed */
   }
@@ -65,17 +74,7 @@
     margin-top: -4px;
   }
   
-  /* .messages-container {
-    width: 100%;
-    padding: 16px;
-    flex-grow: 1;
-    
-    border-radius: var(--border-radius);
-    overflow: hidden;
   
-    display: flex;
-    flex-direction: column;
-  } */
 
   .messages-container {
 
@@ -109,6 +108,14 @@
     align-self: flex-end;
     text-align: right;
     font-size: 11px; /* Adjust the font size based on your preference */
+  }
+
+  .admin-message  {
+    color: #631d76;
+  }
+
+  .mod-message {
+    color: #1a4224;
   }
   
   .sender {

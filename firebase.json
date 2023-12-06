@@ -5,6 +5,7 @@
   },
   "hosting": {
     "public": "build",
+    "site": "n423-final-ga",
     "ignore": [
       "firebase.json",
       "**/.*",
